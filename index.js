@@ -44,9 +44,32 @@ class Airplane {
 */
 
 class Person {
-  
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  } 
+
+  eat(someFood) {
+    if(this.stomach.length < 10) {
+      this.stomach.push(someFood);
+    } 
+  }
+  poop() {
+    this.stomach = [];
+  }
+  toString() {
+    return `${this.name}, ${this.age}`;
+  }
 }
 
+// const dalvis = new Person('Dalvis', 23);
+
+// const foods1 = ['Mango', 'Pizza', 'Bagel', 'Tacos', 'Salad', 'Fruit Bowl', 'Salmon', 'Fries', 'Mashed Potatoes', 'Pasta', 'Tira Misu'];
+// foods1.forEach(function(element){
+//   dalvis.eat(element);
+// })
+// console.log(dalvis.stomach);
 /*
   TASK 2
     - Write a Car class whose constructor initializes `model` and `milesPerGallon`, from 2 arguments.
@@ -62,7 +85,29 @@ class Person {
 */
 
 class Car {
+  constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
   
+  fill(gallons) {
+    this.tank += gallons
+  }
+
+  drive(distance) {
+    const drivableDistance = this.tank * this.milesPerGallon;
+    const gallonsUsed = distance/this.milesPerGallon
+    if(drivableDistance > distance) {
+      this.odometer += distance;
+      this.tank -= gallonsUsed
+    } else {
+      this.odometer += drivableDistance;
+      this.tank = 0
+      return `I ran out of fuel at ${this.odometer} miles!`
+    }
+  }
 }
 
 /*
