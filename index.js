@@ -93,19 +93,19 @@ class Car {
   }
   
   fill(gallons) {
-    this.tank += gallons
+    this.tank += gallons;
   }
 
   drive(distance) {
     const drivableDistance = this.tank * this.milesPerGallon;
-    const gallonsUsed = distance/this.milesPerGallon
+    const gallonsUsed = distance/this.milesPerGallon;
     if(drivableDistance > distance) {
       this.odometer += distance;
-      this.tank -= gallonsUsed
+      this.tank -= gallonsUsed;
     } else {
       this.odometer += drivableDistance;
-      this.tank = 0
-      return `I ran out of fuel at ${this.odometer} miles!`
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
     }
   }
 }
@@ -124,7 +124,15 @@ class Car {
 */
 
 class Lambdasian {
-  
+  constructor(props) {
+    this.name = props.name;
+    this.age = props.age;
+    this.location = props.location;
+  }
+
+  speak() {
+    return `Hello my name is ${this.name}, I am ${this.location}`;
+  }
 }
 
 /*
@@ -142,8 +150,20 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 
-class Instructor {
+class Instructor extends Lambdasian{
+  constructor(props) {
+    super(props);
+    this.specialty = props.specialty;
+    this.favLanguage = props.favLanguage;
+    this.catchPhrase = props.catchPhrase;
+  }
 
+  demo(subject) {
+    return `today we are learning about ${subject}`;
+  }
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
+  }
 }
 
 /*
